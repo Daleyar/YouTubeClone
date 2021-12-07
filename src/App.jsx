@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import youtube from './api/youtube'
+import apiKey from "./api/apikey";
 import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
@@ -21,7 +22,7 @@ class App extends Component {
           params: {
             part: 'snippet',
             maxResults: 4,
-            key: 'AIzaSyB1r_k732RGvq2htmK2tbqXeQXjvWYhkqs',
+            key: apiKey,
             q: searchTerm,
           }
         })
