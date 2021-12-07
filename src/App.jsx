@@ -10,7 +10,8 @@ class App extends Component {
             videos: [],
             video_id:'',
             selectedVideo:'',
-            comments: []
+            comments: [],
+            
         }
     }
     
@@ -31,14 +32,19 @@ class App extends Component {
         });
     }
     
+
     render(){ 
+        
         return(
             <div>
                 <SearchBar handleSearch={this.handleSearch} />
                 <VideoPlayer videoId={this.state.video_id}/>
+                <RelatedVideos videos={this.state.videos}/>
 
             </div>
+            
         )
+        
 
     }
 }
