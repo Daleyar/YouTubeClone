@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import youtube from './api/youtube'
+import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 
@@ -30,13 +31,21 @@ class App extends Component {
           selectedVideo: response.data.items[0]
         });
     }
+
+    onVideoSelect = (video) => {
+        console.log(video)
+        this.setState({ 
+          selectedVideo: video,
+          video_id : video.id.videoId
+        });
+      }
     
     render(){ 
         return(
             <div>
                 <SearchBar handleSearch={this.handleSearch} />
                 <VideoPlayer videoId={this.state.video_id}/>
-
+                <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
             </div>
         )
 
