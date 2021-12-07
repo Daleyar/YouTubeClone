@@ -4,6 +4,9 @@ import apiKey from "./api/apikey";
 import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
+import axios from "axios";
+import CommentsForm from "./components/Comments/commentsForm";
+
 
 class App extends Component {
     constructor(props) {
@@ -41,7 +44,14 @@ class App extends Component {
           video_id : video.id.videoId
         });
       }
-    
+      addComment = async (comment) =>{
+        await axios.post('http://localhost:5000/api/comments', comment)
+        .then(response => this.setState({
+            comments: [...this.state.comments, response.data]
+        }))
+        console.log(this.state.comments)
+      }
+
 
     render(){ 
         
@@ -50,6 +60,7 @@ class App extends Component {
                 <SearchBar handleSearch={this.handleSearch} />
                 <VideoPlayer videoId={this.state.video_id}/>
                 <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+                <CommentsForm videoId={this.state.video_id} addComment={this.addComment} />
             </div>
             
         )
