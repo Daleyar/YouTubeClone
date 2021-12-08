@@ -49,14 +49,6 @@ class App extends Component {
         this.getCommentsById(this.state.video_id)
     }
     
-    getCommentsById = async (video_id) => {
-        console.log(video_id)
-        let response = await axios.get(`http://localhost:5000/api/comments/${video_id}`)
-        this.setState({
-            comments : response.data
-        })
-        console.log(this.state.comments)
-    }
     
     addComment = async (comment) =>{
         await axios.post('http://localhost:5000/api/comments', comment)
@@ -65,11 +57,29 @@ class App extends Component {
         }))
         console.log(this.state.comments)
     }
+    
+    addLike = async (comment) => {
+        console.log(comment)
+        comment.likes += 1
+        let response = await axios.put(`http://localhost:5000/api/comments/${comment._id}`, comment)
+        console.log(response)
+        this.getCommentsById(this.state.video_id)  
+    }
+    addDislike = async (comment) => {
+        console.log(comment)
+        comment.dislikes += 1
+        let response = await axios.put(`http://localhost:5000/api/comments/${comment._id}`, comment)
+        console.log(response)
+        this.getCommentsById(this.state.video_id)  
+    }
 
-    addLike = async (commentID, likes) => {
-        likes += 1
-        await axios.patch(`http://localhost:5000/api/comments/${commentID}`, likes)
-        this.getCommentsById(this.state.video_id)
+    getCommentsById = async (video_id) => {
+        console.log(video_id)
+        let response = await axios.get(`http://localhost:5000/api/comments/${video_id}`)
+        this.setState({
+            comments : response.data
+        })
+        console.log(this.state.comments)
     }
 
     addReply = async (reply) =>{
