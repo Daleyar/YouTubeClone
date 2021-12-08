@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 class CommentsForm extends Component {
@@ -20,9 +19,7 @@ class CommentsForm extends Component {
       videoID: this.props.videoId,
       commentBody : this.state.comments
     }
-
     console.log(comment)
-
     this.props.addComment(comment);
     this.setState({
       video_id: '',
@@ -30,6 +27,7 @@ class CommentsForm extends Component {
     });
   }
   render() { 
+    if (!this.props.videoId) return (null)
     return (
       <div>
         <form className='commentBox' onSubmit={this.handleSubmit} >
