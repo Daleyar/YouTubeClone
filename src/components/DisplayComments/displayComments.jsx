@@ -2,7 +2,8 @@ import React from "react";
 import { Card } from 'react-bootstrap';
 
 const CommentsTable = ({comments , Like, DisLike}) => {
-    if (!comments) return (null);
+    if (!comments[0]) return(null);
+
     return (
         <div>
             <Card>
@@ -17,11 +18,11 @@ const CommentsTable = ({comments , Like, DisLike}) => {
                                     <td>{comment.commentBody}</td>
                                     <td>{comment.likes}
                                         <button className='btn btn-dark btn-sm' 
-                                        onClick={() => Like(comment._id, comment.likes)}>Like</button>
+                                        onClick={() => Like(comment)}>Like</button>
                                     </td>
                                     <td>{comment.dislikes}
                                         <button className='btn btn-dark btn-sm' 
-                                        onClick={() => DisLike(comment._id)}>Dislike</button>
+                                        onClick={() => DisLike(comment)}>Dislike</button>
                                     </td>
                                 </tr>
                                 );
