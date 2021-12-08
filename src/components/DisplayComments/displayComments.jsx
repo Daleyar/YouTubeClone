@@ -15,6 +15,9 @@ const CommentsTable = ({comments , Like, DisLike}) => {
                                 return (
                                 <tr key={comment.id}>
                                     <td>{comment.commentBody}</td>
+                                    <td>{comment.replies.replyBody}
+            
+                                    </td>
                                     <td>{comment.likes}
                                         <button className='btn btn-dark btn-sm' 
                                         onClick={() => Like(comment._id, comment.likes)}>Like</button>

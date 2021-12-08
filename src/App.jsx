@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import youtube from './api/youtube'
-import apiKey from "./api/apikey";
+import youtube from './api/youtube';
+import apiKey from "./api/apiKey";
 import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 import axios from "axios";
 import CommentsForm from "./components/Comments/commentsForm";
 import CommentsTable from "./components/DisplayComments/displayComments";
-
+import CreateReplies from "./components/Replies/replies";
 
 class App extends Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class App extends Component {
             video_id:'',
             selectedVideo:'',
             comments: [],
+            replies: '',
             
         }
     }
@@ -70,6 +71,13 @@ class App extends Component {
         await axios.patch(`http://localhost:5000/api/comments/${commentID}`, likes)
         this.getCommentsById(this.state.video_id)
     }
+
+    addReply = async (reply) =>{
+        await axios.post('http://localhost:5000/api/reply', reply.commentID, reply)
+        console.log(reply)
+        console.log(this.state.comments)
+    }
+
       
     render(){ 
         return(
@@ -79,6 +87,7 @@ class App extends Component {
                 <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
                 <CommentsForm videoId={this.state.video_id} addComment={this.addComment} />
                 <CommentsTable comments={this.state.comments} Like={this.addLike} DisLike={this.addDislike}/>
+                <CreateReplies replies={this.state.replies} addReply={this.addReply}/>
             </div>
             
         )
