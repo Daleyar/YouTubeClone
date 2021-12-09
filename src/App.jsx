@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import youtube from './api/youtube';
 import apiKey from "./api/apiKey";
-import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
+import RelatedVideoList from "./components/RelatedVideos/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 import axios from "axios";
 import CommentsForm from "./components/Comments/commentsForm";
 import CommentsTable from "./components/DisplayComments/displayComments";
+import './App.css'
 
 class App extends Component {
     constructor(props) {
@@ -92,7 +93,8 @@ class App extends Component {
 
     render(){ 
         return(
-            <div>
+            <div className= "app">
+                
                 <SearchBar handleSearch={this.handleSearch} />
                 <VideoPlayer videoId={this.state.video_id}/>
                 <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>

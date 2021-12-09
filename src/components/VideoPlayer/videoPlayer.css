@@ -3,14 +3,13 @@
     overflow: hidden;
     width: 70%;
     padding-top: 56.25%;
-    border: 1px solid black;
     margin-left: 2%;
     float:left;
 }
 
 .responsive-iframe {
     position: absolute;
-    top: 0%;
+    top: 10%;
     left: 0%;
     bottom: 0;
     right: 0;

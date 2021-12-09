@@ -1,5 +1,5 @@
 import React from "react";
-import RelatedVideos from "../RelatedVideos/relatedVideos";
+import RelatedVideos from "../relatedVideos";
 import './relatedVideoList.css'
 
 const RelatedVideoList = ({ videos, onVideoSelect }) => {

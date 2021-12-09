@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
 import CreateReplies from "../Replies/replies";
+import './comments.css'
 
 const CommentsTable = ({comments , Like, DisLike, reply}) => {
     if (!comments[0]) return(null);
@@ -21,7 +22,7 @@ const CommentsTable = ({comments , Like, DisLike, reply}) => {
                 <h3>Comment Section: </h3>
                 </Card.Title>
                     <table>
-                        <tbody>
+                        <tbody className="comment">
                             {comments.map((comment, id) => {
                                 return (
                                 <tr key={comment.id}>
@@ -33,7 +34,7 @@ const CommentsTable = ({comments , Like, DisLike, reply}) => {
                                         <button className='btn btn-dark btn-sm' 
                                         onClick={() => Like(comment)}>Like</button>
                                     </td>
-                                    <td>{comment.dislikes}
+                                    <td> {comment.dislikes}
                                         <button className='btn btn-dark btn-sm' 
                                         onClick={() => DisLike(comment)}>Dislike</button>
                                     </td>
