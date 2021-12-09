@@ -19,6 +19,7 @@ class CommentsForm extends Component {
       videoID: this.props.videoId,
       commentBody : this.state.comments
     }
+    
     console.log(comment)
     this.props.addComment(comment);
     this.setState({

@@ -7,7 +7,6 @@ import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 import axios from "axios";
 import CommentsForm from "./components/Comments/commentsForm";
 import CommentsTable from "./components/DisplayComments/displayComments";
-import CreateReplies from "./components/Replies/replies";
 
 class App extends Component {
     constructor(props) {
@@ -17,8 +16,7 @@ class App extends Component {
             video_id:'',
             selectedVideo:'',
             comments: [],
-            replies: '',
-            
+            replies: []
         }
     }
     
@@ -50,7 +48,7 @@ class App extends Component {
     }
     
     
-    addComment = async (comment) =>{
+    addComment = async (comment) => {
         await axios.post('http://localhost:5000/api/comments', comment)
         .then(response => this.setState({
             comments: [...this.state.comments, response.data]
@@ -82,13 +80,16 @@ class App extends Component {
         console.log(this.state.comments)
     }
 
-    addReply = async (reply) =>{
-        await axios.post('http://localhost:5000/api/reply', reply.commentID, reply)
+    addNewReply = async (reply) => {
         console.log(reply)
-        console.log(this.state.comments)
+        let response = await axios.post('http://localhost:5000/api/comments/reply', reply)
+        console.log(response)
+        this.setState({
+            replies: response.data.replies
+        })
+        this.getCommentsById(this.state.video_id)
     }
 
-      
     render(){ 
         return(
             <div>
@@ -96,8 +97,7 @@ class App extends Component {
                 <VideoPlayer videoId={this.state.video_id}/>
                 <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
                 <CommentsForm videoId={this.state.video_id} addComment={this.addComment} />
-                <CommentsTable comments={this.state.comments} Like={this.addLike} DisLike={this.addDislike}/>
-                <CreateReplies replies={this.state.replies} addReply={this.addReply}/>
+                <CommentsTable comments={this.state.comments} Like={this.addLike} DisLike={this.addDislike} reply={this.addNewReply} />
             </div>
             
         )

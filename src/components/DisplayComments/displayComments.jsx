@@ -1,9 +1,19 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
+import CreateReplies from "../Replies/replies";
 
-const CommentsTable = ({comments , Like, DisLike}) => {
+const CommentsTable = ({comments , Like, DisLike, reply}) => {
     if (!comments[0]) return(null);
 
+    const listOfReplies = (props) => {
+        return(
+            props.replies.map((replylist) => {
+                return(
+                    replylist.replyBody
+                )}
+        ));
+    }
+        
     return (
         <div>
             <Card>
@@ -12,11 +22,11 @@ const CommentsTable = ({comments , Like, DisLike}) => {
                 </Card.Title>
                     <table>
                         <tbody>
-                            {comments.map((comment)=> {
+                            {comments.map((comment, id) => {
                                 return (
                                 <tr key={comment.id}>
                                     <td>{comment.commentBody}</td>
-                                    <td>{comment.replies.replyBody}
+                                    <td>{listOfReplies(comment)}
             
                                     </td>
                                     <td>{comment.likes}
@@ -26,6 +36,10 @@ const CommentsTable = ({comments , Like, DisLike}) => {
                                     <td>{comment.dislikes}
                                         <button className='btn btn-dark btn-sm' 
                                         onClick={() => DisLike(comment)}>Dislike</button>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                       <CreateReplies comment={comment._id} addReply={reply}/>
                                     </td>
                                 </tr>
                                 );

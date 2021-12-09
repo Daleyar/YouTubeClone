@@ -4,8 +4,8 @@ import './relatedVideos.css'
 
 const RelatedVideos = ({video, onVideoSelect}) => {
     return (
-        <div>
-            <Card style={{ width: '18rem' }} onClick={() => onVideoSelect(video)}>
+        <div className="pe-auto">
+            <Card style={{ width: '18rem' }} onClick={() => onVideoSelect(video)} >
                 <img id='img' 
                 alt = 'thumbnail'
                 src = {video.snippet.thumbnails.medium.url}/>

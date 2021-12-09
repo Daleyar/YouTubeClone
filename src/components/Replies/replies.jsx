@@ -4,10 +4,14 @@ class CreateReplies extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          commentId: '',
-          replies: '',
+          replies: [],
         }
     }
+
+    componentDidMount(){
+      console.log(this.props)
+    }
+
     handleChange = (event) => {
         this.setState({
           [event.target.name] : event.target.value
@@ -16,11 +20,11 @@ class CreateReplies extends Component {
     handleSubmit = (event) => {
       event.preventDefault();
       let reply = {
-        commentBody : this.state.comments,
-        replies: this.state.replies
+        commentID: this.props.comment,
+        replyBody: this.state.replies
       }
-      console.log(reply)
-      this.props.addReply(reply);
+
+      this.props.addReply(reply)
       this.setState({
         commentId: '',
         replies: '',
@@ -29,7 +33,7 @@ class CreateReplies extends Component {
     render() { 
       return (
         <div>
-          <form className='replyBox' onSubmit={this.handleSubmit} >
+          <form className='replyBox' onSubmit={this.handleSubmit}>
               <input placeholder= "New Reply" name="replies" type="text" onChange={this.handleChange} value={this.state.replies}/>
               <button type='submit'>Add</button>
           </form>

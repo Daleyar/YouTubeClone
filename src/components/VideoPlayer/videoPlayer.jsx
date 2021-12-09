@@ -14,7 +14,7 @@ const VideoPlayer = ({ videoId }) => {
     <div className="video-player">
       <iframe className="responsive-iframe"
         title={videoId}
-        src={`https://www.youtube.com/embed/${videoId}`}
+        src={`https://www.youtube.com/embed/${videoId}?`}
       />
     </div>
   );
