@@ -9,7 +9,9 @@ const CommentsTable = ({comments , Like, DisLike, reply}) => {
         return(
             props.replies.map((replylist) => {
                 return(
-                    replylist.replyBody
+                    <div>
+                    {replylist.replyBody}
+                    </div>
                 )}
         ));
     }
@@ -24,10 +26,10 @@ const CommentsTable = ({comments , Like, DisLike, reply}) => {
                         {comments.map((comment, id) => {
                             return (
                                 <div>
-                                <div className="comment">Comment: {comment.commentBody}</div>
-                                <div className="reply">Replies: {listOfReplies(comment)}</div>
-                                <div className="likes">{comment.likes} <button className="likeButton" onClick={() => Like(comment)}>Like</button></div>
-                                <div className="dislikes"> {comment.dislikes}<button className="dislikeButton" onClick={() => DisLike(comment)}>Dislike</button></div>
+                                <div className="comment"><b>Comment:</b> {comment.commentBody}</div>
+                                <div className="reply"><b>Replies:</b> {listOfReplies(comment)}</div>
+                                <div className="likes"><b>{comment.likes}</b> <button className="likeButton" onClick={() => Like(comment)}>Like</button></div>
+                                <div className="dislikes"><b>{comment.dislikes}</b><button className="dislikeButton" onClick={() => DisLike(comment)}>Dislike</button></div>
                                 <div className="replySection"><CreateReplies comment={comment._id} addReply={reply}/></div>
                                 </div>
                             );
