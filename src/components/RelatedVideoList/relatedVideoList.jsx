@@ -1,5 +1,5 @@
 import React from "react";
-import RelatedVideos from "../relatedVideos";
+import RelatedVideos from "../RelatedVideos/relatedVideos";
 import './relatedVideoList.css'
 
 const RelatedVideoList = ({ videos, onVideoSelect }) => {
@@ -8,7 +8,7 @@ const RelatedVideoList = ({ videos, onVideoSelect }) => {
     return(
         <center>
         <div className='vidWrap'>
-            <h4>Related Videos</h4> 
+            <h1>Related Videos</h1> 
             {listOfVideos}
         </div>
         </center>

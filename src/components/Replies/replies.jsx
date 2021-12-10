@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './replies.css'
 
 class CreateReplies extends Component {
     constructor(props) {
@@ -34,12 +35,12 @@ class CreateReplies extends Component {
       return (
         <div>
           <form className='replyBox' onSubmit={this.handleSubmit}>
-              <input placeholder= "New Reply" name="replies" type="text" onChange={this.handleChange} value={this.state.replies}/>
-              <button type='submit'>Add</button>
+              <input className="replyInput" placeholder= "  Add a Reply..." name="replies" type="text" onChange={this.handleChange} value={this.state.replies}/>
+              <button className="replyButton" type='submit'>Add</button>
           </form>
         </div>
       );
     }
-  }
+}
    
   export default CreateReplies;

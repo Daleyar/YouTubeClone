@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './commentsForm.css'
 
 
 class CommentsForm extends Component {
@@ -34,8 +34,8 @@ class CommentsForm extends Component {
     return (
       <div>
         <form className='commentBox' onSubmit={this.handleSubmit} >
-            <input placeholder= "New Comment" name="comments" type="text" onChange={this.handleChange} value={this.state.comments}/>
-            <button type='submit'>Add</button>
+            <input className="input" placeholder= "  Add a comment..." name="comments" type="text" onChange={this.handleChange} value={this.state.comments}/>
+            <button className="createButton" type='submit'>Add</button>
         </form>
       </div>
     );

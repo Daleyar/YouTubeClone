@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import youtube from './api/youtube';
 import apiKey from "./api/apiKey";
-import RelatedVideoList from "./components/RelatedVideos/RelatedVideoList/relatedVideoList";
+import RelatedVideoList from "./components/RelatedVideoList/relatedVideoList";
 import SearchBar from "./components/SearchBar/searchBar";
 import VideoPlayer from "./components/VideoPlayer/videoPlayer";
 import axios from "axios";
@@ -25,7 +25,7 @@ class App extends Component {
         const response = await youtube.get('search', {
           params: {
             part: 'snippet',
-            maxResults: 4,
+            maxResults: 5,
             key: apiKey,
             q: searchTerm,
           }
@@ -96,7 +96,7 @@ class App extends Component {
             <div className= "app">
                 
                 <SearchBar handleSearch={this.handleSearch} />
-                <VideoPlayer videoId={this.state.video_id}/>
+                <VideoPlayer videoId={this.state.video_id} video={this.state.selectedVideo}/>
                 <RelatedVideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
                 <CommentsForm videoId={this.state.video_id} addComment={this.addComment} />
                 <CommentsTable comments={this.state.comments} Like={this.addLike} DisLike={this.addDislike} reply={this.addNewReply} />

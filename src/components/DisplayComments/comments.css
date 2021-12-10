@@ -1,6 +1,57 @@
+.comment-box{
+    position: absolute;
+    margin-top:75%;
+    padding-bottom: 2%;
+    left: 5%;
+    width: 65%;
+    text-align: center;
+}
 .comment{
-    
-    background-color: rgb(77, 76, 76);
+    position: relative;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
+.reply{
+    text-align: left;
+    margin-left: 10%;
+}
 
+.likes{
+    position: absolute;
+    border-radius: 8px;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.likeButton{
+    margin-top: 2%;
+    margin-right: 20%;
+}
+
+.dislikeButton{
+    margin-top: 2%;
+    margin-right: 22%;
+}
+
+.dislikes{
+    position: absolute;
+    border-radius: 8px;
+    text-align: left;
+    margin-left: 9%;
+}
+
+.replySection{
+    margin-top: 25px;
+    margin-left: 25px;
+    position: relative;
+    margin-right: 50%;
+}
+
+.commentTitle{
+    position: relative;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 2%;
+}

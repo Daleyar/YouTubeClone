@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
 import CreateReplies from "../Replies/replies";
 import './comments.css'
 
@@ -16,38 +15,25 @@ const CommentsTable = ({comments , Like, DisLike, reply}) => {
     }
         
     return (
-        <div>
-            <Card>
-                <Card.Title>
+        <div className="comment-box">
+            <div>
+                <div className="commentTitle">
                 <h3>Comment Section: </h3>
-                </Card.Title>
-                    <table>
-                        <tbody className="comment">
-                            {comments.map((comment, id) => {
-                                return (
-                                <tr key={comment.id}>
-                                    <td>{comment.commentBody}</td>
-                                    <td>{listOfReplies(comment)}
-            
-                                    </td>
-                                    <td>{comment.likes}
-                                        <button className='btn btn-dark btn-sm' 
-                                        onClick={() => Like(comment)}>Like</button>
-                                    </td>
-                                    <td> {comment.dislikes}
-                                        <button className='btn btn-dark btn-sm' 
-                                        onClick={() => DisLike(comment)}>Dislike</button>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                       <CreateReplies comment={comment._id} addReply={reply}/>
-                                    </td>
-                                </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-            </Card>
+                </div>
+                    <div>
+                        {comments.map((comment, id) => {
+                            return (
+                                <div>
+                                <div className="comment">Comment: {comment.commentBody}</div>
+                                <div className="reply">Replies: {listOfReplies(comment)}</div>
+                                <div className="likes">{comment.likes} <button className="likeButton" onClick={() => Like(comment)}>Like</button></div>
+                                <div className="dislikes"> {comment.dislikes}<button className="dislikeButton" onClick={() => DisLike(comment)}>Dislike</button></div>
+                                <div className="replySection"><CreateReplies comment={comment._id} addReply={reply}/></div>
+                                </div>
+                            );
+                        })}
+                    </div>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.commentBox{
+    position:absolute;
+    margin-top:73%;
+    margin-left: 57%;
+    text-align: center;
+}
+
+.input{
+    width: 80%;
+    border-radius: 8px;
+}
+
+.createButton{
+    border-radius: 8px;
+}
